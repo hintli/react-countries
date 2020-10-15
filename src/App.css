@@ -9,7 +9,7 @@
   margin:10px;
   padding: 20px;
   width: 400px;
-  height: 100px;
+  height: auto;
   border: 1px solid grey;
   background-color: rgb(36, 36, 36);
   color: white;
@@ -26,6 +26,7 @@
 .countryCard > h1 {
   font-size:20px;
 }
+
 
 .countryCard > span {
   font-size:15px;
