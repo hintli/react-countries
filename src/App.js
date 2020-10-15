@@ -6,7 +6,7 @@ import Country from './components/Country';
 import About from './components/About';
 import Contact from './components/Contact';
 import './App.css';
-import {BrowserRouter,Route} from 'react-router-dom'
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 
 function App() {
   return (
@@ -14,10 +14,14 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <div className="container">
+          <Switch>
           <Route path="/" component={CountryList} exact/>
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="/:name" component={Country} />
+
+          </Switch>
+          
         </div>
       </BrowserRouter>
       

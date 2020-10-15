@@ -1,18 +1,33 @@
 import React, { Component } from 'react'
 import Data from '../Data';
-import {NavLink} from 'react-router-dom'
+import CountryCard from './CountryCard'
+import axios from 'axios';
+
+
 
 class UserList extends Component {
+
+    state = {
+        countries: []
+    }
+
+    componentDidMount() {
+        axios.get("https://restcountries.eu/rest/v2/all")
+        .then(rsp => {
+            //console.log(rsp.data)
+            this.setState({
+                countries:rsp.data
+            })
+        })
+    }
+
     render() {
-        console.log(Data)
+        const {countries} = this.state;
         return (
             <div className="countryContainer">
-                {Data.map((ct,i) => {
+                {countries.map((country,i) => {
                     return (<div key={i} className="countryCard"> 
-                                <NavLink  to={'/:'+ct.name}>
-                                        <h1 style={{fontSize:25}} >{ct.name}</h1> 
-                                </NavLink>
-                                <span>{ct.nativeName}</span> 
+                                <CountryCard country={country} />
                             </div> 
                         )
                 })}
